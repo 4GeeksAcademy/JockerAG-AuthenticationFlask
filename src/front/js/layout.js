@@ -4,12 +4,13 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
+
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { RegisterForm } from "./pages/registerForm.jsx";
+import { Perfil } from "./pages/perfil.jsx";
 
 //create your first component
 const Layout = () => {
@@ -26,7 +27,8 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
+                        <Route element={<RegisterForm />} path="/register" />
+                        <Route element={<Perfil/>} path="/perfil" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

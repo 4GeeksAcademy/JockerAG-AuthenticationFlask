@@ -6,6 +6,10 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from api.utils import APIException, generate_sitemap
+from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
@@ -39,7 +43,8 @@ setup_commands(app)
 
 # Add all endpoints form the API with a "api" prefix
 app.register_blueprint(api, url_prefix='/api')
-
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY") # Change this semilla
+jwt = JWTManager(app)
 # Handle/serialize errors like a JSON object
 
 
