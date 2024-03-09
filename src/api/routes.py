@@ -33,7 +33,7 @@ def login():
     user = db.session.execute(db.select(User).where(User.email == email)).scalar()
     print(user)
     if user and password == user.password and user.is_active: 
-        access_token = create_access_token ( identity= [user.email, user.username, user.name])
+        access_token = create_access_token(identity= {"email": user.email, "username": user.username, "name": user.name})
         response_body['access_token'] = access_token
         response_body['message'] = "User logged sucesfully!"
         response_body['results'] = user.serialize()
@@ -44,7 +44,7 @@ def login():
 
 
 # Api signup + login + private
-@api.route('/signup', methods=['POST'])
+@api.route('/register', methods=['POST'])
 def signup():
      response_body = {}
      data = request.json
