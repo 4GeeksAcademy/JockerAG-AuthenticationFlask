@@ -10,7 +10,7 @@ export const Perfil = () => {
 
     return (
         
-        <Card style={{ width: '18rem' }}>
+        <Card className =' my-4 container d-flex justify-content-center' style={{ width: '18rem' }}>
             <Card.Body>
                 <Card.Title>{store.user.email}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{store.user.name}</Card.Subtitle>

@@ -45,6 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 
 			login : async (data) => {
+				const url = process.env.BACKEND_URL + '/api/login/'
 				const options = {
 					method: 'POST',
 					headers: {
@@ -53,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify(data)
 				}
-				const response = await getActions().APICall(process.env.BACKEND_URL + '/api/login/', options);
+				const response = await getActions().APICall(url, options);
 				console.log(response.results);
 				console.log(response);
 				if(response.access_token != undefined) {
